@@ -1,57 +1,35 @@
-@font-face {
-    font-family: "Digital-7";
-    src: url("./assets/digital-7.ttf");
-}
-
 body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-#hex-container {
-    margin: 0 auto;
-    text-align: center;
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-#hex-img {
-    user-select: none;
-}
-
-
-#rank-container {
+#container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-.rank-number {
-    font-family: "Digital-7", monospace;
-    margin: 0;
-    padding: 0;
-    /* font-size: 13rem; */
-    font-size: 30vh;
+#container > input {
+    margin: 0 15px;
 }
 
-#id-container {
+#clipboard {
     position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.rank-id {
-    font-family: "Digital-7", monospace;
-    font-size: 5vh;
-    font-weight: bold;
+    top: 0;
+    left: 0;
+    margin: -100px;
 }
 
-@media (max-width: 992px) {
-    #hex-img {
-        width: 100%;
-        height: 100%;
-    }
+#form > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#form {
+    text-align: end;
+}
+
+#form > button {
+    margin-top: 10px;
+    margin-left: 10px;
 }

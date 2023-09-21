@@ -9,33 +9,35 @@
 
   <meta name="description" content="" />
 
-  <!-- <link rel="icon" href="favicon.png"> -->
   <link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
-    <div id="hex-container">
-        <img id="hex-img" src="./assets/hex.webp" />
-        <div id="rank-container">
-            <h1 id="rank-number" class="rank-number"></h1>
-        </div>
+    <input type="text" id="clipboard" placeholder="" />
 
-        <div id="id-container">
-            <h1 id="rank-id" class="rank-id"></h1>
-        </div>
+    <div id="container">
+        <form action="#" id="form">
+            <h1 id="header">Get Embed Code For</h1>
+
+            <div>
+                <label for="id-input">Player ID:</label>
+                <input type="text" id="id-input" placeholder="Player ID number eg. 126212866" />
+            </div>
+
+            <div>
+                <label for="w-input">Width:</label>
+                <input type="text" id="w-input" value="500"/>
+            </div>
+
+            <div>
+                <label for="h-input">Height:</label>
+                <input type="text" id="h-input" value="500"/>
+            </div>
+
+            <a id="permalink" href="#">Permalink</a>
+            <button type="submit" id="submit">Copy code</button>
+        </form>
     </div>
-
-    <!-- <script type='text/javascript' charset='utf-8'>     
-        var iframe = document.createElement('iframe');       
-        document.body.appendChild(iframe);
-
-        iframe.src = 'http://127.0.0.1:5500/index.html?playerId=302214028';       
-        iframe.width = '250';
-        iframe.height = '250';
-    </script> -->
-
-
-
 </body>
 
 <script src="index.js"></script>

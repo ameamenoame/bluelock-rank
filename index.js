@@ -1,42 +1,41 @@
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTdWJqZWN0IjoiNDA4MTUxNzAtYjQ0NS00MWU1LWFkY2MtNWE1Mjk5NjM0ZTgxIiwiU3RlYW1JZCI6IjE0MTY4NTE5NyIsIm5iZiI6MTY5NTMwNjU5MywiZXhwIjoxNzI2ODQyNTkzLCJpYXQiOjE2OTUzMDY1OTMsImlzcyI6Imh0dHBzOi8vYXBpLnN0cmF0ei5jb20ifQ.dPxtiybyXB7dLPrTFkUBSgHJ_D39CMk8HYrRG4dIfRc";
-const urlBase = "https://api.stratz.com/api/v1";
 
-const PLAYER_INFO_URL = "/Player/";
+const button = document.getElementById("submit");
+const idInput = document.getElementById("id-input");
+const wInput = document.getElementById("w-input");
+const hInput = document.getElementById("h-input");
+const clipboard = document.getElementById("clipboard");
+const header = document.getElementById("header");
+const link = document.getElementById("permalink");
 
-const rank_number = document.getElementById("rank-number");
-const rank_id = document.getElementById("rank-id");
+button.addEventListener("click", (e) => {
+    e.preventDefault();
 
-let playerId;
-{
-    const urlp = new URLSearchParams(window.location.search);
-    const param =  urlp.get("playerId");
-    playerId = param;
-}
-let fullUrl = `${urlBase}${PLAYER_INFO_URL}${playerId}`;
+    let val = Number(idInput.value);
+    console.log("ID = " + val);
 
-if (playerId !== null) {
-    fetch(fullUrl, {
-        headers: new Headers({
-            "Authorization": "Bearer " + token
-        })
-    }).then((res) => {
-        let data = res.json().then((data) => {
-        let rank = data.steamAccount.seasonLeaderboardRank;
-        rank_number.innerText = rank;
 
-        let pid = data.steamAccount.name;
-        rank_id.innerText = pid;
-        }).catch((e) => {
-            notFound();
-        });
-    }).catch((err) => {
-        notFound();
-    });
-} else {
-    notFound();
-}
+    if (!val) return;
 
-function notFound() {
-    rank_number.innerText = 404;
-    rank_id.innerText = "NOT FOUND";
-}
+    let w = Number(wInput.value);
+    let h = Number(hInput.value);
+
+
+
+
+    clipboard.value = `
+    <script type='text/javascript' charset='utf-8'>     
+        var iframe = document.createElement('iframe');       
+        document.body.appendChild(iframe);
+
+        iframe.src = 'https://ameamenoame.github.io/bluelock-rank/?playerId=${val}';       
+        iframe.width = '${w}';
+        iframe.height = '${h}';
+    </script>
+    `;
+    clipboard.select();
+    clipboard.setSelectionRange(0, 99999);
+
+    link.href = `./rank.html?playerId=${val}`;
+    navigator.clipboard.writeText(clipboard.value)
+    alert("Copied!");
+});
