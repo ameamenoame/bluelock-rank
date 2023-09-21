@@ -26,6 +26,10 @@ if (playerId === null) {
     }).then((res) => {
         res.json().then((data) => {
             let rank = data.steamAccount.seasonLeaderboardRank;
+            if (!rank) {
+                notFound();
+                return;
+            }
             updateRank(rank);
             let pid = data.steamAccount.name;
             rank_id.innerText = pid;
