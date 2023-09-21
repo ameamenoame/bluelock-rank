@@ -44,7 +44,6 @@ if (playerId === null) {
 }
 
 function updateRankLoop() {
-    console.log("update loop");
     fetch(fullUrl, {
         headers: new Headers({
             "Authorization": "Bearer " + token
@@ -65,6 +64,7 @@ function updateRank(rank) {
         if (start >= rank) {
             rank_number.innerText = rank;
             clearInterval(id);
+            return;
         }
         start += amount;
         rank_number.innerText = start;
