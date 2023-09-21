@@ -24,8 +24,12 @@
     <input type="text" id="clipboard" placeholder="" />
 
     <div id="container">
+        <div id="header-img">
+            <img src="./assets/hex.webp" />
+        </div>
+
+        <h1 id="header">Dota 2 Leaderboard Counter</h1>
         <form action="#" id="form">
-            <h1 id="header">Get Embed Code For</h1>
 
             <div>
                 <label for="id-input">Player ID:</label>
@@ -42,10 +46,22 @@
                 <input type="text" id="h-input" value="500"/>
             </div>
 
-            <a id="permalink" href="./rank.html?playerId=141685197">Example</a>
-            <a id="permalink" href="#">Permalink</a>
-            <button type="submit" id="submit">Copy code</button>
+            <button type="button" id="show">Show</button>
+            <button type="submit" id="submit">Copy embed code</button>
         </form>
+        
+        <hr>
+
+        <h6>How do I get my player ID number?</h6>
+        <p>You can try searching for your profile on sites such as Dotabuff, OpenDota, Stratz. Your player ID will be the 8 or 9 digit number that's in your profile URL on these sites.</p>
+        <p>For example: <a href="https://stratz.com/players/126212866">https://stratz.com/players/126212866</a> where the player ID is <a id="permalink" href="./rank.html?playerId=126212866">126212866</a></p>
+
+        <h6>Does this work for non-Immortal players?</h6>
+        <p>This only works for Immortal players with a leaderboard position in their respective region.</p>
+
+        <hr>
+        
+        <h6 id="stratz-text">Powered by <a href="https://stratz.com">Stratz</a></h6>
     </div>
 </body>
 

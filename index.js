@@ -5,29 +5,32 @@ const wInput = document.getElementById("w-input");
 const hInput = document.getElementById("h-input");
 const clipboard = document.getElementById("clipboard");
 const header = document.getElementById("header");
-const link = document.getElementById("permalink");
+
+const showButton = document.getElementById("show");
+
+showButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    let val = Number(idInput.value);
+    if (!val) return;
+
+    window.location.href = `./rank.html?playerId=${val}`;
+});
 
 button.addEventListener("click", (e) => {
     e.preventDefault();
 
     let val = Number(idInput.value);
-    console.log("ID = " + val);
-
-
     if (!val) return;
 
     let w = Number(wInput.value);
     let h = Number(hInput.value);
-
-
-
 
     clipboard.value = `
     <script type='text/javascript' charset='utf-8'>     
         var iframe = document.createElement('iframe');       
         document.body.appendChild(iframe);
 
-        iframe.src = 'https://ameamenoame.github.io/bluelock-rank/?playerId=${val}';       
+        iframe.src = 'https://ameamenoame.github.io/bluelock-rank/rank.html?playerId=${val}';       
         iframe.width = '${w}';
         iframe.height = '${h}';
     </script>
@@ -35,7 +38,6 @@ button.addEventListener("click", (e) => {
     clipboard.select();
     clipboard.setSelectionRange(0, 99999);
 
-    link.href = `./rank.html?playerId=${val}`;
-    navigator.clipboard.writeText(clipboard.value)
-    alert("Copied!");
+    navigator.clipboard.writeText(clipboard.value);
+    alert("Embed code copied.");
 });

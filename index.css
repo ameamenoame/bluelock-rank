@@ -3,10 +3,8 @@ body {
 }
 
 #container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    width: 30%;
 }
 
 #container > input {
@@ -32,4 +30,22 @@ body {
 #form > button {
     margin-top: 10px;
     margin-left: 10px;
+}
+
+#stratz-text {
+    text-align: end;
+}
+
+#header-img {
+    text-align: center;
+}
+
+img {
+    height: 150px;
+}
+
+@media (max-width: 992px) {
+    #container {
+        width: 100%;
+    }
 }
