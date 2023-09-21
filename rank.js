@@ -14,26 +14,58 @@ let playerId;
 }
 let fullUrl = `${urlBase}${PLAYER_INFO_URL}${playerId}`;
 
-if (playerId !== null) {
+let current_rank;
+
+if (playerId === null) {
+    notFound();
+} else {
     fetch(fullUrl, {
         headers: new Headers({
             "Authorization": "Bearer " + token
         })
     }).then((res) => {
-        let data = res.json().then((data) => {
-        let rank = data.steamAccount.seasonLeaderboardRank;
-        rank_number.innerText = rank;
+        res.json().then((data) => {
+            let rank = data.steamAccount.seasonLeaderboardRank;
+            updateRank(rank);
+            let pid = data.steamAccount.name;
+            rank_id.innerText = pid;
 
-        let pid = data.steamAccount.name;
-        rank_id.innerText = pid;
+            setInterval(updateRankLoop, 1000 * 60 * 5);
         }).catch((e) => {
             notFound();
         });
     }).catch((err) => {
         notFound();
     });
-} else {
-    notFound();
+}
+
+function updateRankLoop() {
+    console.log("update loop");
+    fetch(fullUrl, {
+        headers: new Headers({
+            "Authorization": "Bearer " + token
+        })
+    }).then((res) => {
+        res.json().then((data) => {
+            let rank = data.steamAccount.seasonLeaderboardRank;
+            if (rank !== current_rank) updateRank(rank);
+        });
+    })
+}
+
+function updateRank(rank) {
+    let amount = 1;
+    if (rank > 1000) amount = 11;
+    let start = 1;
+    const id = setInterval(() => {
+        if (start >= rank) {
+            rank_number.innerText = rank;
+            clearInterval(id);
+        }
+        start += amount;
+        rank_number.innerText = start;
+    }, 10);
+    current_rank = rank;
 }
 
 function notFound() {
