@@ -1,0 +1,57 @@
+@font-face {
+    font-family: "Digital-7";
+    src: url("/assets/digital-7.ttf");
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#hex-container {
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#hex-img {
+    user-select: none;
+}
+
+
+#rank-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.rank-number {
+    font-family: "Digital-7", monospace;
+    margin: 0;
+    padding: 0;
+    /* font-size: 13rem; */
+    font-size: 30vh;
+}
+
+#id-container {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.rank-id {
+    font-family: "Digital-7", monospace;
+    font-size: 5vh;
+    font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    #hex-img {
+        width: 100%;
+        height: 100%;
+    }
+}
